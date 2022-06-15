@@ -20,8 +20,6 @@ const db = require('knex')({
   },
 });
 
-const api_Key = process.env.API_KEY;
-
 app.use(cors());
 app.use(express.json());
 
@@ -47,7 +45,6 @@ app.put('/image', (req, res) => {
 
 app.post('/imageurl', (req, res) => {
   image.handleApiCal(req, res);
-  image.api(req, res, api_Key);
 });
 
 app.listen(process.env.PORT || 3000, () => {

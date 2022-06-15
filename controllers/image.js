@@ -3,18 +3,16 @@ require('dotenv').config();
 
 // console.log(Clarifai);
 
-const app = (req, res, api_Key) => {
-  new Clarifai.App({
-    apiKey: api_Key,
-  });
-};
+const app = new Clarifai.App({
+  apiKey: '4d9001cba4d44a84bd97e1db38625907',
+});
 const handleApiCal = (req, res) => {
   app.models
     .predict(Clarifai.FACE_DETECT_MODEL, req.body.input)
     .then((data) => {
       res.json(data);
     })
-    .catch((err) => res.status(400).json('unable to  work with API'));
+    .catch((err) => res.status(400).json('unable to work with API'));
 };
 
 const handleImage = (req, res, db) => {
@@ -32,5 +30,4 @@ const handleImage = (req, res, db) => {
 module.exports = {
   handleImage,
   handleApiCal,
-  app,
 };
