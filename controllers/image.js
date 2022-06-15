@@ -3,9 +3,11 @@ require('dotenv').config();
 
 // console.log(Clarifai);
 
-const app = new Clarifai.App({
-  apiKey: 'a403429f2ddf4b49b307e318f00e528b',
-});
+const app = (req, res, api_Key) => {
+  new Clarifai.App({
+    apiKey: api_Key,
+  });
+};
 const handleApiCal = (req, res) => {
   app.models
     .predict(Clarifai.FACE_DETECT_MODEL, req.body.input)
@@ -30,4 +32,5 @@ const handleImage = (req, res, db) => {
 module.exports = {
   handleImage,
   handleApiCal,
+  app,
 };
