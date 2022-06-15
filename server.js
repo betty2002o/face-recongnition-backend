@@ -1,14 +1,14 @@
 const express = require('express');
 const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
-const app = express();
+
 const register = require('./controllers/register');
 const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
 const image = require('./controllers/image');
 require('dotenv').config();
 
-console.log(process.env);
+const app = express();
 
 const db = require('knex')({
   client: 'pg',
@@ -47,6 +47,6 @@ app.post('/imageurl', (req, res) => {
   image.handleApiCal(req, res);
 });
 
-app.listen(process.env.port || 3000, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log(`app is running on port ${process.env.PORT}`);
 });
