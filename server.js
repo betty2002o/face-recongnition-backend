@@ -47,6 +47,6 @@ app.post('/imageurl', (req, res) => {
   image.handleApiCal(req, res);
 });
 
-app.listen(3000, () => {
-  console.log('app is running on port 3000');
+app.listen(process.env.port || 3000, () => {
+  console.log(`app is running on port ${process.env.PORT}`);
 });
