@@ -4,7 +4,7 @@ require('dotenv').config();
 // console.log(Clarifai);
 
 const app = new Clarifai.App({
-  apiKey: '4d9001cba4d44a84bd97e1db38625907',
+  apiKey: process.env.API_Clarifai,
 });
 const handleApiCal = (req, res) => {
   app.models
